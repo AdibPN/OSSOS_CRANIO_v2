@@ -6,7 +6,7 @@ spl_autoload_register(function ($class) {
 	if (file_exists($arquivo))
 		include $arquivo;
 	else
-		exit("<h1>O Arquivo não foi encontrado:</h1> <i>" . $arquivo . "</i>");
+	exit('Arquivo não encontrado. Arquivo: ' . $arquivo . "<br />");
 });
 
 ?>

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\DAO;
+namespace APP\DAO;
 
-use App\Model\OssoModel;
+use APP\Model\OssoModel;
 use \PDO;
 
 class OssoDAO extends DAO {
@@ -50,7 +50,7 @@ class OssoDAO extends DAO {
   
     public function selectById(int $id)
     {
-        include_once 'model/OssoModel.php';
+        //include_once 'model/OssoModel.php';
 
         $sql = "SELECT * FROM Osso WHERE id = ?";
 

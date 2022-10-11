@@ -1,8 +1,8 @@
 <?php
 
-namespace App\DAO;
+namespace APP\DAO;
 
-use App\Model\TipoModel;
+use APP\Model\TipoModel;
 use \PDO;
 
 class TipoDAO extends DAO {
@@ -48,7 +48,7 @@ class TipoDAO extends DAO {
    
     public function selectById(int $id)
     {
-        include_once 'model/TipoModel.php';
+       //include_once 'model/TipoModel.php';
 
         $sql = "SELECT * FROM Tipo WHERE id = ?";
 

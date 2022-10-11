@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Controller;
+namespace APP\Controller;
 
-use App\Model\TipoModel;
+use APP\Model\TipoModel;
 
 class TipoController extends Controller
 {
    
     public static function index() 
     {
+        parent::isAuthenticated();
         $model = new TipoModel();
         $model->getAllRows();
 
@@ -18,6 +19,7 @@ class TipoController extends Controller
     
     public static function form()
     {
+        parent::isAuthenticated();
         $model = new TipoModel();
 
         if(isset($_GET['id'])) 
@@ -27,8 +29,9 @@ class TipoController extends Controller
     }
 
   
-    public static function save() {
-        
+    public static function save() 
+    {
+        parent::isAuthenticated();
         $Tipo = new TipoModel();
         $Tipo->id = $_POST['id'];
         $Tipo->nome = $_POST['nome'];
@@ -42,6 +45,7 @@ class TipoController extends Controller
 
     public static function delete()
     {
+        parent::isAuthenticated();
         $model = new TipoModel();
 
         $model->delete( (int) $_GET['id'] ); 

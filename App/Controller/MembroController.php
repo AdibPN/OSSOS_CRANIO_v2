@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Controller;
+namespace APP\Controller;
 
-use App\Model\MembroModel;
+use APP\Model\MembroModel;
 
 class MembroController extends Controller
 {
    
     public static function index() 
     {
+        
+        parent::isAuthenticated();
         $model = new MembroModel();
         $model->getAllRows();
 
@@ -18,6 +20,7 @@ class MembroController extends Controller
    
     public static function form()
     {
+        parent::isAuthenticated();
         $model = new MembroModel();
 
         if(isset($_GET['id'])) 
@@ -27,11 +30,16 @@ class MembroController extends Controller
     }
 
    
-    public static function save() {
+    public static function save() 
+    {
+        parent::isAuthenticated();
+
         $Membro = new MembroModel();
         $Membro->id = $_POST['id'];
         $Membro->nome = $_POST['nome'];
         $Membro->partes = $_POST['partes'];
+
+        ##olhar se realmente é $Membro ou $Model
 
         $Membro->save();
         header("Location: /Membro"); 
@@ -40,6 +48,7 @@ class MembroController extends Controller
 
     public static function delete()
     {
+        parent::isAuthenticated();
         $model = new MembroModel();
 
         $model->delete( (int) $_GET['id'] ); 

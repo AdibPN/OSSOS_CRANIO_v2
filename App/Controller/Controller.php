@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace APP\Controller;
 
 abstract class Controller {
 	protected static function render($view, $model = null) {
@@ -9,7 +9,13 @@ abstract class Controller {
 		if (file_exists($arquivo_view))
 			include $arquivo_view;
 		else
-			exit("<h1>Arquivo da view não foi encontrado:</h1>. " . $view);
+			exit('<h1>Arquivo da view não foi encontrado:</h1>. Arquivo ' . $view);
 	}
+
+	protected static function isAuthenticated()
+    {
+        if(!isset($_SESSION['usuario_logado']))
+            header("location: /login");
+    } 
 }
 ?>

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\DAO;
+namespace APP\DAO;
 
-use App\Model\MembroModel;
+use APP\Model\MembroModel;
 use \PDO;
 
 class MembroDAO extends DAO
@@ -47,7 +47,7 @@ class MembroDAO extends DAO
 
     public function selectById(int $id)
     {
-        include_once 'model/MembroModel.php';
+        //include_once 'model/MembroModel.php';
 
         $sql = "SELECT * FROM Membro WHERE id = ?";
 

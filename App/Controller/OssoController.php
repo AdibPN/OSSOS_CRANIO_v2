@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Controller;
+namespace APP\Controller;
 
-use App\Model\OssoModel;
+use APP\Model\OssoModel;
 
 class OssoController extends Controller
 {
     public static function index() 
     {
+        parent::isAuthenticated();
         $model = new OssoModel();
         $model->getAllRows();
 
@@ -16,6 +17,7 @@ class OssoController extends Controller
 
     public static function form() 
     {
+        parent::isAuthenticated();
         $model = new OssoModel();
 
         if(isset($_GET['id']))
@@ -27,6 +29,7 @@ class OssoController extends Controller
 
     public static function save() 
     {
+        parent::isAuthenticated();
         $Osso = new OssoModel();
         $Osso->id = $_POST['id'];
         $Osso->funcao = $_POST['funcao'];
@@ -40,6 +43,7 @@ class OssoController extends Controller
 
     public static function delete()
     {
+        parent::isAuthenticated();
         $model = new OssoModel();
 
         $model->delete( (int) $_GET['id'] ); 
