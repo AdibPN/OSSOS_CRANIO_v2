@@ -19,7 +19,10 @@ class LoginController extends Controller
 
         $usuario_logado = $model->autenticar();
 
-        if ($usuario_logado !== null) {
+        //var_dump($usuario_logado);
+        //exit;
+
+        if(is_object($usuario_logado)) {
 
             $_SESSION['usuario_logado'] = $usuario_logado;
 

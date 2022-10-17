@@ -8,9 +8,9 @@ class MembroController extends Controller
 {
    
     public static function index() 
-    {
-        
+    {        
         parent::isAuthenticated();
+        
         $model = new MembroModel();
         $model->getAllRows();
 
@@ -21,6 +21,7 @@ class MembroController extends Controller
     public static function form()
     {
         parent::isAuthenticated();
+        
         $model = new MembroModel();
 
         if(isset($_GET['id'])) 
@@ -49,6 +50,7 @@ class MembroController extends Controller
     public static function delete()
     {
         parent::isAuthenticated();
+        
         $model = new MembroModel();
 
         $model->delete( (int) $_GET['id'] ); 

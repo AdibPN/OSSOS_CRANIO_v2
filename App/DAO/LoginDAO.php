@@ -15,6 +15,9 @@ class LoginDAO extends DAO
 
     public function selectByEmailAndSenha($email, $senha)
     {
+        //var_dump($email, $senha);
+        //exit;
+
         $sql = "SELECT * FROM usuario WHERE email = ? AND senha = sha1(?) ";
 
         $stmt = $this->conexao->prepare($sql);
@@ -22,7 +25,7 @@ class LoginDAO extends DAO
         $stmt->bindValue(2, $senha);
         $stmt->execute();
 
-        return $stmt->fetchObject("APP\Controller\MembroController"); 
+        return $stmt->fetchObject("APP\Model\LoginModel"); 
     }
 
     
