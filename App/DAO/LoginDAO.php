@@ -22,7 +22,7 @@ class LoginDAO extends DAO
         $stmt->bindValue(2, $senha);
         $stmt->execute();
 
-        return $stmt->fetchObject("APP\Model\LoginModel"); 
+        return $stmt->fetchObject("APP\Controller\MembroController"); 
     }
 
     

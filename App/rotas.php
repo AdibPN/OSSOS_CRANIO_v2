@@ -1,16 +1,17 @@
 <?php
 
+
 use APP\Controller\LoginController;
 use App\Controller\MembroController;
-use App\Controller\TipoController;
-use App\Controller\OssoController;
+use APP\Controller\TipoController;
+use APP\Controller\OssoController;
 
 
 $uri_parse = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+//switch ($url) 
 
+switch($uri_parse)
 
-//switch($uri_parse)
-switch ($url) 
 {
     case '/login':
         LoginController::index();
@@ -23,15 +24,13 @@ switch ($url)
     case '/logout':
         LoginController::logout();
     break;
-    case "/":
-        echo "Inicial";
-    break;
+   
 
     
     
     case '/':
         echo "página inicial";
-        break;
+    break;
 
 
 

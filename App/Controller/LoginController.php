@@ -23,7 +23,7 @@ class LoginController extends Controller
 
             $_SESSION['usuario_logado'] = $usuario_logado;
 
-            header("Location: /");
+            header("Location: /Membro/form");
 
         } else
             header("Location: /login?erro=true");
