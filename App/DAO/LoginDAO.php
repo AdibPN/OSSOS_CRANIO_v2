@@ -4,6 +4,7 @@ namespace APP\DAO;
 
 use APP\Model\LoginModel;
 use \PDO;
+use FFI\Exception;
 
 class LoginDAO extends DAO
 {
@@ -11,6 +12,22 @@ class LoginDAO extends DAO
     {
         parent::__construct();
 
+    }
+
+    public function insert(LoginModel $model){
+        try{
+            $sql = 'INSERT INTO usuario(nome, email, senha) VALUES (?, ?, sha1(?))';
+
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->bindValue(1, $model->nome);
+            $stmt->bindValue(2, $model->email);
+            $stmt->bindValue(3, $model->senha);
+
+            $stmt->execute();
+
+        }catch(Exception $e){
+            echo 'Não foi possível cadastrar o usuario, erro: ' . $e->getMessage();
+        }        
     }
 
     public function selectByEmailAndSenha($email, $senha)
@@ -28,5 +45,8 @@ class LoginDAO extends DAO
         return $stmt->fetchObject("APP\Model\LoginModel"); 
     }
 
+    public function update(){
+        
+    }
     
 }

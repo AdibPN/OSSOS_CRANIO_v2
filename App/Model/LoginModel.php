@@ -3,6 +3,7 @@
 namespace APP\Model;
 
 use APP\DAO\LoginDAO;
+use FFI\Exception;
 
 class LoginModel extends Model
 {
@@ -19,5 +20,20 @@ class LoginModel extends Model
         else
             null;
     }
+
+    public function save(){
+        $dao = new LoginDAO();
+        try{
+            if($this->id == null){
+                $dao->insert($this);
+            }            
+            else{
+                $dao->update($this);
+            }
+        }catch(Exception $e){
+            echo 'Não foi possível salvar a notícia, erro: ' . $e->getMessage();
+        }                     
+    }
+    
 }
 

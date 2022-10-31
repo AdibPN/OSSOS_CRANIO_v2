@@ -14,6 +14,14 @@ create table osso (
   primary key (id)
 );
 
+create table usuario (
+id int auto_increment,
+  nome varchar(100), 
+  email varchar(100),
+  senha varchar(250),
+  primary key (id)
+);
+
 create table membro (
   id int auto_increment,
   nome varchar(100),
