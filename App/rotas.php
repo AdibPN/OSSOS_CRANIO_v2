@@ -43,7 +43,7 @@ switch($uri_parse)
     
     
     case '/':
-        echo "página inicial";
+        MembroController::form();
     break;
 
 

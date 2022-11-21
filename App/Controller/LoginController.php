@@ -29,33 +29,27 @@ class LoginController extends Controller
           
             $model->save();
 
-            header("Location: /form");
+            header("Location: /Tipo/form");
 
         }catch(Exception $e){
             echo 'Erro: ' . $e->getMessage();
         }
     }
 
-    public static function auth()
-    {
+    public static function auth(){
         $model = new LoginModel();
+
         $model->email = $_POST['email'];
         $model->senha = $_POST['senha'];
 
         $usuario_logado = $model->autenticar();
 
-        //var_dump($usuario_logado);
-        //exit;
-
         if($usuario_logado !== null){
-
             $_SESSION['usuario_logado'] = $usuario_logado;
-
             header("Location: /Membro/form");
-
-        } else
+        }else{
             header("Location: /login?erro=true");
-
+        }
     }
 
     public static function view(){

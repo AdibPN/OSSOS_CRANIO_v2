@@ -16,10 +16,8 @@
 </head>
 <body>
     <div class="container">
-        <form class="form" action="/login/save" method="post">
-            <input class="form-control" name="id" type="hidden" />
-            <label>Nome de Usuario:</label>
-            <input class="form-control" name="nome" type="text" required/>
+        <form class="form" action="/login/auth" method="post">
+            
             <label>E-mail:</label>
             <input class="form-control" name="email" type="text" required/>
             <label>Senha:</label>
