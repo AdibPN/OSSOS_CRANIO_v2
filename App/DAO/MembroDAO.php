@@ -2,15 +2,24 @@
 
 namespace APP\DAO;
 
+use App\DAO\MySQL;
 use APP\Model\MembroModel;
+use FFI\Exception;
 use \PDO;
 
 class MembroDAO extends DAO
 {
+    public $conexao;
+
     public function __construct()
     {
-        parent::__construct();
+        try{            
+           return parent::__construct();
+        }catch(Exception $e){
+            echo 'Não foi possível conectar ao banco de dados, erro: ' . $e->getMessage();
+        }        
     }
+
 
     public function insert(MembroModel $model)
     {
@@ -57,6 +66,7 @@ class MembroDAO extends DAO
 
         return $stmt->fetchObject("\App\Model\MembroModel");
     }
+    
 
     public function delete(int $id)
     {

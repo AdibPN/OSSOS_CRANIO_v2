@@ -22,6 +22,7 @@ class LoginController extends Controller
         try{
             $model = new LoginModel(); 
 
+            $model->nome = $_POST['nome'];
             $model->email = $_POST['email'];
             $model->senha = $_POST['senha'];
             
@@ -55,6 +56,14 @@ class LoginController extends Controller
         } else
             header("Location: /login?erro=true");
 
+    }
+
+    public static function view(){
+        $model = new LoginModel();
+        
+        $model->getAll();
+
+        include 'View/modules/Login/ListarUsuario.php';
     }
 
     public static function logout()

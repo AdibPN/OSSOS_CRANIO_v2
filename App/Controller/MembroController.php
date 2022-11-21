@@ -3,9 +3,22 @@
 namespace APP\Controller;
 
 use APP\Model\MembroModel;
+use FFI\Exception;
 
 class MembroController extends Controller
 {
+    public static function form()
+    {
+        parent::isAuthenticated();
+        
+        $model = new MembroModel();
+
+        if(isset($_GET['id'])) 
+            $model = $model->getById( (int) $_GET['id']);
+
+        parent::render("Membro/Form", $model);
+    }
+
    
     public static function index() 
     {        
@@ -16,20 +29,6 @@ class MembroController extends Controller
 
         parent::render("Membro/ListaMembro", $model);
     }
-
-   
-    public static function form()
-    {
-        parent::isAuthenticated();
-        
-        $model = new MembroModel();
-
-        if(isset($_GET['id'])) 
-            $model = $model->getById( (int) $_GET['id']);
-
-        parent::render("Membro/FormMembro", $model);
-    }
-
    
     public static function save() 
     {
@@ -47,15 +46,18 @@ class MembroController extends Controller
     }
 
 
-    public static function delete()
-    {
-        parent::isAuthenticated();
+    public static function delete(){        
         
-        $model = new MembroModel();
+        $model = new MembroModel();    
 
-        $model->delete( (int) $_GET['id'] ); 
-        
-        header("Location: /Membro"); 
+        if(isset($_GET['id'])){
+            $model->delete($_GET['id']);
+            header("Location: /home");
+        }            
+        else
+            echo '<script>alert(Erro ao deletar a notícia.)</script>';
     }
+
+ 
 
 }

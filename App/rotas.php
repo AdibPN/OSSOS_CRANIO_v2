@@ -8,6 +8,7 @@ use APP\Controller\OssoController;
 
 
 $uri_parse = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+include 'Autoload.php';
 //switch ($url) 
 
 switch($uri_parse)
@@ -17,6 +18,14 @@ switch($uri_parse)
         LoginController::index();
     break;
 
+    case '/login/view':
+        LoginController::view();
+    break;
+
+    case '/login/save':
+        LoginController::save();
+    break;
+
     case '/login/auth':
         LoginController::auth();
     break;
@@ -24,6 +33,11 @@ switch($uri_parse)
     case '/logout':
         LoginController::logout();
     break;
+
+    case '/login/form':
+        LoginController::form();
+        break;
+
    
 
     
@@ -50,6 +64,8 @@ switch($uri_parse)
     case '/Membro/delete':
         MembroController::delete();
     break;
+
+    
 
     # criando rotas produto
 

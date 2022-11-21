@@ -2,7 +2,9 @@
 
 namespace APP\Model;
 
+
 use APP\DAO\MembroDAO;  
+use FFI\Exception;
 
 class MembroModel extends Model
 {
@@ -22,7 +24,7 @@ class MembroModel extends Model
         }          
     }
 
-
+ 
 
     public function getAllRows()
     {

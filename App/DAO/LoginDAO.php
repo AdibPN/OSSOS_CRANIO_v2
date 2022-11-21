@@ -30,6 +30,20 @@ class LoginDAO extends DAO
         }        
     }
 
+    public function select(){
+        try{
+            $sql = 'SELECT * FROM usuario';
+
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->execute();       
+
+            return $stmt->fetchAll(PDO::FETCH_CLASS);
+        }catch(Exception $e){
+            echo 'Não foi possível listar os usuarios, erro: ' . $e->getMessage();
+        }     
+    }
+
+
     public function selectByEmailAndSenha($email, $senha)
     {
         //var_dump($email, $senha);
