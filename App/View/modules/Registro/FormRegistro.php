@@ -16,13 +16,20 @@
 </head>
 <body>
     <div class="container">
-        <form class="form" action="/login/auth" method="post">
+        <form class="form" action="/register/save" method="post">
             
             <label>E-mail:</label>
             <input class="form-control" name="email" type="text" required/>
+
+            <label>Nome:</label>
+            <input class="form-control" name="nome" type="text" required/>
             <label>Senha:</label>
             <input class="form-control" name="senha" type="password" required/><br>
-            <button class="btn btn-primary" type="submit">Entrar</button>
+            <button class="btn btn-primary" type="submit">Register</button>
+
+            <?php if (isset($_GET["erro"])):?>
+                <h1>Erro ao registrar</h1>
+            <?php endif;?>
         </form>
     </div>
 </body>

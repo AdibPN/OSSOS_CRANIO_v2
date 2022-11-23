@@ -12,11 +12,6 @@ class LoginController extends Controller
         parent::render('Login/FormLogin');
     }
 
-    public static function form()
-    {
-        parent::render('Login/FormMembro');
-    }
-
     public static function save()
     {                  
         try{

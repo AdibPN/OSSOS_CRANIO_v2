@@ -5,7 +5,7 @@ use APP\Controller\LoginController;
 use App\Controller\MembroController;
 use APP\Controller\TipoController;
 use APP\Controller\OssoController;
-
+use APP\Controller\RegistroController;
 
 $uri_parse = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 include 'Autoload.php';
@@ -14,12 +14,16 @@ include 'Autoload.php';
 switch($uri_parse)
 
 {
-    case '/login':
-        LoginController::index();
+    case '/register':
+        RegistroController::form();
     break;
 
-    case '/login/view':
-        LoginController::view();
+    case '/register/save':
+        RegistroController::save();
+    break;
+
+    case '/login':
+        LoginController::index();
     break;
 
     case '/login/save':
@@ -33,21 +37,10 @@ switch($uri_parse)
     case '/logout':
         LoginController::logout();
     break;
-
-    case '/login/form':
-        LoginController::form();
-        break;
-
-   
-
-    
     
     case '/':
         MembroController::form();
     break;
-
-
-
 
     case '/Membro':
         MembroController::index();

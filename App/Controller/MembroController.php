@@ -16,7 +16,7 @@ class MembroController extends Controller
         if(isset($_GET['id'])) 
             $model = $model->getById( (int) $_GET['id']);
 
-        parent::render("Membro/Form", $model);
+        parent::render("Membro/FormMembro", $model);
     }
 
    
